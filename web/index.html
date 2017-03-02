@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Log Monitor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css" />
+</head>
+
+<body>
+    <h2 style="width:100%; text-align:center;">Log Monitor</h2>
+
+    <form method="post" id="fileinfo" name="fileinfo" onsubmit="return submitForm();">
+        <div class="container">
+            <div class="row col-md-12">
+                <input type="file" name="file" required />
+            </div>
+            <br/>
+            <br/>
+            <label><b>Log file Defination:</b></label>
+            <input type="text" name="logpattern" id="logpattern" placeholder="Eg: HTTP_METHOD,URL,HTTP_VERSION,ORIGIN_HEADER,SSL_CIPHER,SSL_PROTOCOL,LB_NAME,TIMESTAMP,CLIENT_IP:port,BACKEND_IP:port,request_processing_time,backend_processing_time,response_processing_time,elb_status_code,backend_status_code,received_bytes,sent_bytes"
+                required/>
+            <span>*Please enter comma seperated fields.</span>
+            <br/>
+            <span>Eg: <b>HTTP_METHOD,URL,HTTP_VERSION,ORIGIN_HEADER,SSL_CIPHER,SSL_PROTOCOL,LB_NAME,TIMESTAMP,CLIENT_IP:port,BACKEND_IP:port,
+              <br/>request_processing_time,backend_processing_time,response_processing_time,elb_status_code,backend_status_code,received_bytes,sent_bytes</b></span>
+            <button type="submit">Test Logs</button>
+            <div class="row col-md-12" style="color:green;">
+                <b style="font-size:22px;">Status:</b> <span id="status" style="color:green;font-size:18px;"></span>
+            </div>
+        </div>
+
+    </form>
+
+    <div class="container">
+        <ul>
+            <li><span>Application detects whwther the system is attacked or not based on predefined params</span></li>
+            <li><span>User uploaded <b>.log</b> or <b>.txt</b> files and defines the log file pattern</span></li>
+            <li><span>Output file is generated and browser prompts to download.</span></li>
+            <li><span>Output file consists of boolean flag <b>YES/NO for each line</b> of log.</span></li>
+            <li><span>*Params harcoded at server for attack: <b>ORIGIN_HEADER as "MATLAB 2013a"</b> and <b>CLIENT_IP is Non-Indian</b></span></li>
+        </ul>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script type="text/javascript" src="/scripts/main.js"></script>
+</body>
+
+</html>
